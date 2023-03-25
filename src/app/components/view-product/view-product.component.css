@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:wght@100;200;300;400&display=swap');
+
+* {   
+    font-family: 'Poppins', 'Didact Gothic', sans-serif;
+    font-size: 14px;
+}
+
+p{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.body {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.card-header{
+    background-color: orange;
+}
+
+img {
+    
+    width:  319px;
+    height: 350px;    
+    object-fit: fill;
+}
+
+.add_cart{
+    background-color: orange;
+}
+
+.add_cart:hover {
+    background-color: rgb(185, 132, 33);
+}
+
+.view_chair {
+    background-color: orange;    
+}
+
+.view_chair:hover {
+    background-color: rgb(185, 132, 33);
+}

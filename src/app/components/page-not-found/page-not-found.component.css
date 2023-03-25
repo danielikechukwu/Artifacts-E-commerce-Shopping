@@ -1,0 +1,12 @@
+svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    width: 1920px;
+  }
+
+img#image {
+   margin: 0 auto;
+   display: flex;  
+   
+}

@@ -1,0 +1,21 @@
+* {
+    line-height: 100vh;
+    overflow: hidden;
+    background-color: red;
+}
+#carouselExampleIndicators {    
+    background-color: rgb(212, 180, 119);
+    width: 60%;
+    overflow: hidden;
+}
+
+#carousel-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#Navigate {
+    background-color: rgb(212, 180, 119);
+    width: 40%;
+    height: 100%;
+}
