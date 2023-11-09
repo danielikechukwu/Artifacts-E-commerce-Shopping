@@ -3,6 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Bug } from '../interface/bug';
 import { BugService } from '../Services/bug.service';
 import { Subscription, timer } from 'rxjs';
+import { IconDefinition, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewArtProductComponent } from '../dialog/view-art-product/view-art-product.component';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +16,8 @@ import { Subscription, timer } from 'rxjs';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   price: number = 234;
-
+  faShoppingCart: IconDefinition = faCartShopping;
+  faEye: IconDefinition = faEye;
   furnitures!: Bug[];
 
   sub: Subscription | undefined;
@@ -20,7 +26,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     private router: Router,
     private bugService: BugService,
     private route: ActivatedRoute,
-    private _bugService: BugService
+    private _bugService: BugService,
+    private matSnackBar: MatSnackBar,
+    private matDialog: MatDialog
+    
   ) {
     //reading the resolver with snapshot and the data name same with the KEY defined in the app-routing.module.ts
     // this.furnitures = this.route.snapshot.data['productList'];
@@ -49,13 +58,17 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
-  onView(furniture: Bug) {
-    this.router.navigate([
-      '/product',
-      furniture.id,
-      furniture.name,
-      furniture.price,
-    ]);
+  // viewArt(furniture: Bug) {
+  //   this.router.navigate([
+  //     '/product',
+  //     furniture.id,
+  //     furniture.name,
+  //     furniture.price,
+  //   ]);
+  // }
+
+  viewArt(furniture: Bug) {
+this.matDialog.open(ViewArtProductComponent)
   }
 
   onEdit(furniture: Bug) {

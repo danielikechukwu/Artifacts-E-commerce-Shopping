@@ -21,7 +21,7 @@
 
 .header {
 
-    background-color: orange;
+    background-color: white;
     width: 100%;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -31,11 +31,12 @@
     top: 0;
     z-index: 100;
     margin-top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
 }
 
 .logo_text {
-    color: white;
+    color: black;
     margin-left: 6px;
     text-align: center;
     justify-content: flex-start;
@@ -65,14 +66,15 @@
 
 .header_right {
     display: flex;
+    /* border: 1px solid red; */
     margin-right: 2%;
     align-items: center;
-    width: 250px;
+    width: 130px;
     justify-content: space-around;
 }
 
 #badge {
-    background-color: blue;
+    background-color: black;
     border-radius: 50%;
     position: absolute;
     margin-left: -13px;
@@ -114,4 +116,52 @@ input {
     100% {
         transform: rotate(360deg)
     }
+}
+
+.socials {
+    display: flex;
+    padding-left: 2%;
+}
+
+.facebook {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.instagram {
+  
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.twitter {
+
+    width: 30px;
+    height: 30px;  
+    border-radius: 50%;
+    text-align: center;
+}
+
+.linkedln {
+   
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.footer_right {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer{
+    margin-top: 5%;
+    z-index: 100;
 }
