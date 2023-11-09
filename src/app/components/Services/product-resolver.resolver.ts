@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { BugService } from './bug.service';
 import { Bug, BugResolved } from '../interface/bug';
@@ -12,7 +8,7 @@ import { Bug, BugResolved } from '../interface/bug';
   providedIn: 'root'
 })
 
-export class ProductResolverResolver implements Resolve<Bug[]> {
+export class ProductResolverResolver  {
 
   constructor(private bugService: BugService){
 
@@ -31,7 +27,7 @@ export class ProductResolverResolver implements Resolve<Bug[]> {
   providedIn: 'root'
 })
 
-export class ProductViewResolverResolver implements Resolve<Bug> {
+export class ProductViewResolverResolver  {
 
   constructor(private bugService: BugService){
 

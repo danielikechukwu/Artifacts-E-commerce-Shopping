@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  CanDeactivate,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CreateProductComponent } from './create-product.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CreateCanActivateProductGuard implements CanActivate {
+export class CreateCanActivateProductGuard  {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -26,7 +20,7 @@ export class CreateCanActivateProductGuard implements CanActivate {
 }
 
 export class CreateCanDeactivateProductGuard
-  implements CanDeactivate<CreateProductComponent>
+  
 {
   canDeactivate(
     component: CreateProductComponent,
