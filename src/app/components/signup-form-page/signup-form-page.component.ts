@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class SignupFormPageComponent implements OnInit {
 
-  signinform: FormGroup;
+  signinform!: FormGroup;
 
   ngOnInit(): void {
 

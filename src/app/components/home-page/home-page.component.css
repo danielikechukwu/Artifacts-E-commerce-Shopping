@@ -60,7 +60,7 @@ p{
 }
 
 .card-header{
-    background-color: orange;
+    /* background-color: orange; */
     cursor: pointer;
 }
 
@@ -77,7 +77,7 @@ img {
 }
 
 .add_cart{
-    background-color: orange;
+    border: 1px solid rgb(185, 132, 33);
 }
 
 .add_cart:hover {
@@ -85,7 +85,8 @@ img {
 }
 
 .view_chair {
-    background-color: orange;    
+    /* background-color: orange;     */
+    border: 1px solid  rgb(185, 132, 33);
 }
 
 .view_chair:hover {

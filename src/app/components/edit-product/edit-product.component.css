@@ -17,7 +17,7 @@ svg#clouds {
 }
 
 input[type=submit] {
-    width: 100%;
+    width: 40%;
     background-color: orange;
     color: white;
     padding: 14px 20px;

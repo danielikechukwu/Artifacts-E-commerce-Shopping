@@ -1,68 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { delay } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bug } from '../interface/bug';
 import { BugService } from '../Services/bug.service';
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css']
+  styleUrls: ['./edit-product.component.css'],
 })
 export class EditProductComponent implements OnInit {
-
-
   productEdit: Bug = {
-
     id: '',
     name: '',
     price: 0,
-    url: ''
+    url: '',
+  };
 
-  }
+  errMessage!: string;
 
-  constructor(private route: ActivatedRoute, private bugService: BugService, private router: Router){}
+  constructor(
+    private route: ActivatedRoute,
+    private bugService: BugService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
+    // _____________________________________________________
+    // |When reading route parameter with Snapshot.      |
+    // _____________________________________________________
 
-    this.route.paramMap.subscribe({
-      next: (params) => {
+    const id = this.route.snapshot.paramMap.get('id');
 
-        const id = params.get('id');
+    if (id) {
+      this.bugService.getSingleProductList(id).subscribe({
+        next: (result) => (this.productEdit = result),
 
-        if(id){
-          //call api
-          this.bugService.getSingleProductList(id).pipe(delay(500))
-          .subscribe({
-            
-            next: (result) =>{
+        error: (err) => (this.errMessage = err),
 
-              this.productEdit = result;
+        complete: () => console.log('Completed successfully'),
+      });
+    }
 
-              console.log(result)
+    // _____________________________________________________
+    // |When reading route parameter with Observable.      |
+    // _____________________________________________________
 
-            }
-          });
-        }
-      }
-    })
+    // this.route.paramMap.subscribe({
 
+    //   next: (params) => {
+
+    //     const id = params.get('id');
+
+    //     if(id){
+
+    //       this.bugService.getSingleProductList(id).subscribe({
+
+    //         next: (result) => this.productEdit = result,
+
+    //         error: (err) => this.errMessage = err,
+
+    //         complete: () => console.log('Completed successfully')
+
+    //       });
+    //     }
+
+    //   }
+    // })
   }
 
   updateProduct() {
+    this.bugService
+      .updateProduct(this.productEdit.id, this.productEdit)
+      .subscribe({
+        next: (result: void) => {
+          console.log(`${this.productEdit.name}, updated successfully`);
 
-    this.bugService.updateProduct(this.productEdit.id, this.productEdit)
-    .subscribe({
-      next: (result) => {
+          this.router.navigate(['']);
 
-        this.productEdit = result;
-
-        this.router.navigate([''])
-
-        console.log(result)
-      }
-    })
-    
+          console.log(result);
+        },
+      });
   }
-
 }

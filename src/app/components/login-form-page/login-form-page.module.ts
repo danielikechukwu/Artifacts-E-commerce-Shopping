@@ -5,15 +5,12 @@ import { LoginFormPageRoutingModule } from './login-form-page-routing.module';
 import { LoginFormPageComponent } from './login-form-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    LoginFormPageComponent
-  ],
+  declarations: [LoginFormPageComponent],
   imports: [
     CommonModule,
     LoginFormPageRoutingModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class LoginFormPageModule { }
+export class LoginFormPageModule {}

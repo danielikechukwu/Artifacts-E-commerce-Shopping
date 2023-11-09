@@ -7,9 +7,9 @@
             <label for="fname">Fullname</label>
             <input type="text" id="fullname" firstname="firstname" placeholder="First name" formControlName="fullname" required>
 
-            <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+            <div *ngIf="fullname?.invalid && (fullname?.dirty || fullname?.touched)" class="alert alert-danger">
               
-              <div *ngIf="fullname.errors?.['required']">
+              <div *ngIf="fullname?.errors?.['required']">
                 First name is required
               </div>
 
@@ -18,17 +18,17 @@
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Email" formControlName="email" required> 
 
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
 
-              <div *ngIf="email.errors?.['required']">
+              <div *ngIf="email?.errors?.['required']">
                 Email is required
               </div>
 
-              <div *ngIf="email.errors?.['minlength']">
+              <div *ngIf="email?.errors?.['minlength']">
                 Email must be at least 5 characters long.
               </div>
 
-              <div *ngIf="email.errors?.['email']">
+              <div *ngIf="email?.errors?.['email']">
                 Enter a valid email address
               </div>
 
@@ -37,13 +37,13 @@
             <label for="lname">Username</label>
             <input type="text" placeholder="username" formControlName="username" required> 
 
-            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+            <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="alert alert-danger">
 
-              <div *ngIf="username.errors?.['required']">
+              <div *ngIf="username?.errors?.['required']">
                 Username is required
               </div>
 
-              <div *ngIf="username.errors?.['minlength']">
+              <div *ngIf="username?.errors?.['minlength']">
                 Username must be at least 5 characters long.
               </div>
 
@@ -52,13 +52,13 @@
             <label for="lname">Password</label>
             <input type="password" placeholder="Password" formControlName="password" required> 
 
-            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
 
-              <div *ngIf="password.errors?.['required']">
+              <div *ngIf="password?.errors?.['required']">
                 Password is required
               </div>
 
-              <div *ngIf="password.errors?.['minlength']">
+              <div *ngIf="password?.errors?.['minlength']">
                 Password must be at least 8 characters long.
               </div>
 

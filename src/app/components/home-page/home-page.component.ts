@@ -1,86 +1,77 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bug } from '../interface/bug';
 import { BugService } from '../Services/bug.service';
-import { delay } from 'rxjs';
-import { ShoppingCartServiceService } from '../Services/shopping-cart-service.service';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
 })
-
-export class HomePageComponent implements OnInit {
-
+export class HomePageComponent implements OnInit, OnDestroy {
   price: number = 234;
 
- furnitures: Bug[];
+  furnitures!: Bug[];
 
-  constructor( private router: Router, private bugService: BugService, private shoppingcart: ShoppingCartServiceService, private route: ActivatedRoute ){
+  sub: Subscription | undefined;
 
-    this.furnitures = this.route.snapshot.data['productlist'];
-
-
+  constructor(
+    private router: Router,
+    private bugService: BugService,
+    private route: ActivatedRoute,
+    private _bugService: BugService
+  ) {
+    //reading the resolver with snapshot and the data name same with the KEY defined in the app-routing.module.ts
+    // this.furnitures = this.route.snapshot.data['productList'];
   }
 
   ngOnInit(): void {
-    
-    // this.bugService.getProductList().subscribe((result: any) => {this.furnitures = result; console.log(result)})
-
-    // this.bugService.getProductList().pipe(delay(500))
-    // .subscribe({
-      // next: (furnitures) => {
-
-      // this.furnitures = furnitures
-
-//     console.log(furnitures)
-
-      // },
-
-      // error: (Response) => {
-      //   console.log(Response)
-      // }
-    // })
-
+    // ________________________________________________________________
+    // |All the below codes have to be commented out since we are now   |
+    // |using Resolver to fetch the data first before displaying them.  |
+    // |________________________________________________________________|
+    this.sub = this.bugService.getProductList().subscribe({
+      next: (furnit) => {
+        this.furnitures = furnit;
+      },
+      error: (Response) => {
+        console.log(Response);
+      },
+      complete: () => console.log('Observer got a complete notification.'),
+    });
+    // timer(0, 100).subscribe(() => {
+    //   console.log(this.lisfilter);
+    // });
   }
 
-  onView(furniture) {
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe();
+  }
 
-    // to navigate to a new link we will Router
-    this.router.navigate(['/product', furniture.id])
+  onView(furniture: Bug) {
+    this.router.navigate([
+      '/product',
+      furniture.id,
+      furniture.name,
+      furniture.price,
+    ]);
+  }
 
-  } 
-
-  onEdit(furniture){
-
-    this.router.navigate(['/edit', furniture.id] )
+  onEdit(furniture: Bug) {
+    this.router.navigate([
+      '/edit',
+      furniture.id,
+      furniture.name,
+      { outlets: { popup: null } },
+    ]);
   }
 
   addItemToCart() {
-    alert("Hello you clicked me")
+    alert('Hello you clicked me');
   }
 
-  addToCart(furniture) {
-    this.shoppingcart.addToCart(furniture);
-    console.log(furniture);
+  addToCart(furniture: Bug) {
+    alert('Hello you clicked me');
   }
-
-
 }
-
-
-
-// this.bugService.getProductList().pipe(delay(500))
-// .subscribe({
-//   next: (furnitures) => {
-
-//     this.furnitures = furnitures
-
-//     console.log(furnitures)
-//   },
-
-//   error: (Response) => {
-//     console.log(Response)
-//   }
-// })

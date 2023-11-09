@@ -1,32 +1,41 @@
-import { Component } from '@angular/core';
-import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError,  } from '@angular/router';
-import { delay } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import {
+  Router,
+  Event,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+} from '@angular/router';
+import { BugService } from './components/Services/bug.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  // title = 'Art Shop';
+export class AppComponent implements OnInit {
+  text: string = 'Hello';
+  // showLoadingIndicator: boolean = true;
 
-  Loading;
-  
-  constructor(private _route: Router) {
+  constructor(private _router: Router, private _bugService: BugService) {
+    //the instanceof returns boolean, so it checks if it is an instance of NavigationStart or NavigationEnd.
 
-    this._route.events.subscribe(ev => {
+    // this._router.events.subscribe((routerEvent: Event) => {
+    //   if (routerEvent instanceof NavigationStart) {
+    //     this.showLoadingIndicator = true;
+    //   }
 
-      if(ev instanceof NavigationStart){
-        
-        this.Loading = true;
+    //   if (
+    //     routerEvent instanceof NavigationEnd ||
+    //     routerEvent instanceof NavigationCancel ||
+    //     routerEvent instanceof NavigationCancel
+    //   ) {
+    //     this.showLoadingIndicator = false;
+    //   }
+    // });
+  }
 
-      }
+  ngOnInit(): void {
 
-      if(ev instanceof NavigationEnd || ev instanceof NavigationCancel || ev instanceof NavigationError){
-        
-        this.Loading = false;
-
-      }
-    })
   }
 }

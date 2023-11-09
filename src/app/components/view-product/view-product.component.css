@@ -15,10 +15,6 @@ p{
     padding-right: 1%;
 }
 
-.card-header{
-    background-color: orange;
-}
-
 img {
     
     width:  319px;
@@ -27,7 +23,8 @@ img {
 }
 
 .add_cart{
-    background-color: orange;
+    /* background-color: orange; */
+    border: 1px solid rgb(185, 132, 33);
 }
 
 .add_cart:hover {
@@ -35,7 +32,8 @@ img {
 }
 
 .view_chair {
-    background-color: orange;    
+    /* background-color: orange;     */
+    border: 1px solid rgb(185, 132, 33);
 }
 
 .view_chair:hover {

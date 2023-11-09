@@ -12,7 +12,7 @@ export class ShoppingCartServiceService implements OnInit {
 
   ngOnInit(): void {}
 
-  addToCart(product) {
+  addToCart(product: any) {
     this.items.push(product);
   }
 

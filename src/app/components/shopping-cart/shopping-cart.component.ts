@@ -11,7 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   title= "Shopping Cart"
 
-  items: Bug[];
+  items: Bug[] | undefined;
 
   constructor(private shoppingcart: ShoppingCartServiceService){}
 

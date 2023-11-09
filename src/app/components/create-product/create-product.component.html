@@ -4,16 +4,21 @@
 
     <form #form="ngForm" (ngSubmit)="addProductDetails()">
 
-        <label for="fname">Name</label>
+        <label for="fname">title</label>
         <input type="text" id="name" class="form-control" required name="name" [(ngModel)]="addProduct.name">
 
 
-        <label for="email">Url</label>
+        <label for="email">url</label>
         <input type="text" id="email" required name="url" [(ngModel)]="addProduct.url">
+        <!-- <p>{{addProduct.url}}</p> -->
 
-        <label for="lname">Price</label>
+        <label for="lname">price</label>
         <input type="number" id="price" required name="price" [(ngModel)]="addProduct.price">
+        <!-- <p>{{isSave}}</p> -->
 
+        <div>
+          <button mat-btn>Cancel</button>
+        </div>
         <input type="submit" value=submit id="btn">        
     
     </form>

@@ -9,3 +9,9 @@ export interface Bug {
     url: string;
 
 }
+
+
+export interface BugResolved{
+    bug: Bug;
+    error?: any;
+}
