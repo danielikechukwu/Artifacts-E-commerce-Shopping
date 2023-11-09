@@ -1,18 +1,26 @@
-<div class="container">
+
 <header>
-<h1>"Calmness"<br> Anthony Pulley</h1>
-<h1>23.000 $</h1>
+<h1>"Calmness"<br> {{data.name}}</h1>
+<h1>{{data.price}} $</h1>
 </header>
 
 <div class="main">
 
 <div class="art-description">
+<p><strong >Year:</strong> 1500</p>
+<p><strong>Dimensions:</strong> 77cm x 53cm</p>
+<p><strong>Edition:</strong> Unique</p>
+<p><strong>Material:</strong> Board (popular), oil</p>
+
+<p><strong>Additionally:</strong></p>
+<p> is simply dummy text of the printing<br> and typesetting industry. <br>Lorem Ipsum has been the industry's<br> standard dummy text ever since the 1500s.</p>
+
+<button style="margin-top: 2%;" class="btn btn-secondary">Purchase</button>
 
 </div>
 
 <div class="art-image">
-
+<img id="display-image" src={{data.image}} alt="display image"/>
 </div>
 
-</div>
 </div>

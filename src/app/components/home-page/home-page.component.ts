@@ -68,7 +68,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
   // }
 
   viewArt(furniture: Bug) {
-this.matDialog.open(ViewArtProductComponent)
+this.matDialog.open(ViewArtProductComponent, {
+  width: '800px'
+  , data: { name: furniture.name, price: furniture.price, image: furniture.url },
+})
   }
 
   onEdit(furniture: Bug) {
