@@ -11,6 +11,7 @@ import { Bug } from '../interface/bug';
 @Injectable({
   providedIn: 'root',
 })
+
 export class BugService {
   baseurl: string;
 

@@ -1,29 +1,42 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Bug } from '../interface/bug';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ShoppingCartServiceService implements OnInit {
 
-  items : Bug[] = [];
 
-  constructor() { }
+  cartProducts = new BehaviorSubject<Bug[]>([]);
 
-  ngOnInit(): void {}
+  cartProducts$ = this.cartProducts.asObservable();
 
-  addToCart(product: any) {
-    this.items.push(product);
+  constructor() { 
+
   }
 
-  getItems() {
-    return this.items;
+  ngOnInit(): void {
+
   }
 
-  clearCart() {
-    this.items = [];
-    return this.items;
+  createCartProducts(product: Bug){
+    this.cartProducts.next([...this.cartProducts.getValue(), product]);
   }
+
+  // addToCart(product: any) {
+  //   this.items.push(product);
+  // }
+
+  // getItems() {
+  //   return this.items;
+  // }
+
+  // clearCart() {
+  //   this.items = [];
+  //   return this.items;
+  // }
 
 
 

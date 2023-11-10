@@ -10,7 +10,6 @@ import {
   ProductResolverResolver,
   ProductViewResolverResolver,
 } from './components/Services/product-resolver.resolver';
-import { MessageComponent } from './components/message/message.component';
 
 const routes: Routes = [
   // {
@@ -67,12 +66,6 @@ const routes: Routes = [
       import('./components/shopping-cart/shopping-cart.module').then(
         (m) => m.ShoppingCartModule
       ),
-  },
-
-  {
-    path: 'message',
-    component: MessageComponent,
-    outlet: 'popup',
   },
 
   { path: '**', component: PageNotFoundComponent },

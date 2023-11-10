@@ -12,7 +12,6 @@ import {
   CreateCanDeactivateProductGuard,
 } from './components/create-product/create-product.guard';
 import { RouterModule } from '@angular/router';
-import { MessageComponent } from './components/message/message.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewArtProductComponent } from './components/dialog/view-art-product/view-art-product.component';
@@ -23,7 +22,6 @@ import {MatDialogModule} from '@angular/material/dialog';
   declarations: [
     AppComponent
     , routingComponents
-    , MessageComponent
     , ViewArtProductComponent
   ],
 
