@@ -16,6 +16,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewArtProductComponent } from './components/dialog/view-art-product/view-art-product.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
 
@@ -29,6 +31,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule
     , HttpClientModule
     , BrowserAnimationsModule
+    , MatButtonModule
     , FormsModule
     , FontAwesomeModule
     , RouterModule

@@ -24,20 +24,4 @@ export class ShoppingCartServiceService implements OnInit {
   createCartProducts(product: Bug){
     this.cartProducts.next([...this.cartProducts.getValue(), product]);
   }
-
-  // addToCart(product: any) {
-  //   this.items.push(product);
-  // }
-
-  // getItems() {
-  //   return this.items;
-  // }
-
-  // clearCart() {
-  //   this.items = [];
-  //   return this.items;
-  // }
-
-
-
 }

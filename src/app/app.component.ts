@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Router,
-  Event,
-  NavigationStart,
-  NavigationEnd,
-  NavigationCancel,
-} from '@angular/router';
-import { BugService } from './components/Services/bug.service';
+import { Bug } from './components/interface/bug';
+import { ShoppingCartServiceService } from './components/Services/shopping-cart-service.service';
 
 @Component({
   selector: 'app-root',
@@ -14,28 +8,15 @@ import { BugService } from './components/Services/bug.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  shoppingCartProducts!: Bug[];
   text: string = 'Hello';
-  // showLoadingIndicator: boolean = true;
 
-  constructor(private _router: Router, private _bugService: BugService) {
-    //the instanceof returns boolean, so it checks if it is an instance of NavigationStart or NavigationEnd.
-
-    // this._router.events.subscribe((routerEvent: Event) => {
-    //   if (routerEvent instanceof NavigationStart) {
-    //     this.showLoadingIndicator = true;
-    //   }
-
-    //   if (
-    //     routerEvent instanceof NavigationEnd ||
-    //     routerEvent instanceof NavigationCancel ||
-    //     routerEvent instanceof NavigationCancel
-    //   ) {
-    //     this.showLoadingIndicator = false;
-    //   }
-    // });
-  }
+  constructor(private shoppingCartServiceService: ShoppingCartServiceService) {}
 
   ngOnInit(): void {
-
+    this.shoppingCartServiceService.cartProducts$.subscribe((value: Bug[]) => {
+      this.shoppingCartProducts = value;
+      console.log(this.shoppingCartProducts.length);
+    });
   }
 }
