@@ -20,18 +20,16 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   constructor(
     private shoppingcart: ShoppingCartServiceService,
     private matSnackBar: MatSnackBar
-  ) {
-
-  }
+  ) {}
 
   ngOnDestroy(): void {
-   if(this.cartProductsSubscription){
-    this.cartProductsSubscription.unsubscribe();
-   }
+    if (this.cartProductsSubscription) {
+      this.cartProductsSubscription.unsubscribe();
+    }
 
-   if(this.cartProductsAmountSubscription){
-    this.cartProductsAmountSubscription.unsubscribe;
-   }
+    if (this.cartProductsAmountSubscription) {
+      this.cartProductsAmountSubscription.unsubscribe;
+    }
   }
 
   ngOnInit() {
@@ -52,25 +50,29 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       },
     });
 
-    this.cartProductsAmountSubscription = this.shoppingcart.cartProducts$.pipe(
-      map(item => item.reduce((total: number, value: Bug) => {
-return total + value.price
-      }, 0))
-    ).subscribe({
-      next: (response: number) => {
-        this.totalCartAmount = response
-      },
-      error: () => {
-        this.matSnackBar.open('Oops!!!, Sorry cummulated amount could not be resolved'
-        , ''
-        , {
-          duration: 3000
-          , verticalPosition: 'top'
-          , panelClass: ['red-snack-bar-color']
-        })
-      }
-    })
-
-
+    this.cartProductsAmountSubscription = this.shoppingcart.cartProducts$
+      .pipe(
+        map((item) =>
+          item.reduce((total: number, value: Bug) => {
+            return total + value.price;
+          }, 0)
+        )
+      )
+      .subscribe({
+        next: (response: number) => {
+          this.totalCartAmount = response;
+        },
+        error: () => {
+          this.matSnackBar.open(
+            'Oops!!!, Sorry cummulated amount could not be resolved',
+            '',
+            {
+              duration: 3000,
+              verticalPosition: 'top',
+              panelClass: ['red-snack-bar-color'],
+            }
+          );
+        },
+      });
   }
 }

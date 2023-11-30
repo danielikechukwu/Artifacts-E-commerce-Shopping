@@ -2,7 +2,7 @@
 
     <!-- *ngFor="let item of items" -->
 
-    <div class="card_wrapper row col-12" style="display: flex; justify-content: space-between;">
+    <div class="card_wrapper row col-12" style="display: flex; justify-content: space-between;" *ngIf="items?.length; else noItem">
 
         <div class="ordered_product col-7" style="margin-right: 3px;">
 
@@ -101,7 +101,7 @@
 
                 <div class="card-footer" style="padding: 2%;">
 
-                    <button mat-flat-button color="primary">Checkout</button>
+                    <button id="check-out-button" mat-flat-button color="primary">Checkout</button>
 
                 </div>
 
@@ -111,5 +111,8 @@
 
     </div>
 
+    <ng-template #noItem>
+        <h1>No Product in cart.</h1>
+    </ng-template>
 
 </div>
