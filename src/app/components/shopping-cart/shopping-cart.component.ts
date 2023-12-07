@@ -9,6 +9,7 @@ import { Subscription, map, reduce, scan } from 'rxjs';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css'],
 })
+
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   title = 'Shopping Cart';
 

@@ -18,6 +18,9 @@ import { ViewArtProductComponent } from './components/dialog/view-art-product/vi
 import {MatDialogModule} from '@angular/material/dialog';
 import { ShoppingCartModule } from './components/shopping-cart/shopping-cart.module';
 import { MatButtonModule } from '@angular/material/button';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
 

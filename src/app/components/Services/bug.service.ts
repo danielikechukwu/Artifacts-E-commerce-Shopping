@@ -3,24 +3,18 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
-  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable, catchError, delay, retry, tap, throwError } from 'rxjs';
 import { Bug } from '../interface/bug';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class BugService {
-  baseurl: string;
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'my-token',
-    }),
-  };
+  baseurl!: string;
 
   //Handling error message
   private HandleError(error: HttpErrorResponse) {
@@ -40,13 +34,12 @@ export class BugService {
     return throwError(() => errorMessage);
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private fireStore: Firestore) {
     this.baseurl = 'https://localhost:7103';
 
-    console.log('Details given out');
   }
 
-  //Fetch data
+  // Fetch data
   getProductList(): Observable<Bug[]> {
     var oberservable = this.http
       .get<Bug[]>(this.baseurl + '/api/ProductArt')
@@ -55,15 +48,14 @@ export class BugService {
     return oberservable;
   }
 
-  //Create product
+  // Create product
   postUserData(productData: Bug): Observable<Bug> {
     productData.id = '00000000-0000-0000-0000-000000000000';
 
     var oberservable = this.http
       .post<Bug>(
         this.baseurl + '/api/ProductArt',
-        productData,
-        this.httpOptions
+        productData
       )
       .pipe(
         tap((data) => console.log(JSON.stringify(data))),
@@ -115,5 +107,7 @@ export class BugService {
 
     return observable;
   }
+
+
 }
 
